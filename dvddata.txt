@@ -1,0 +1,14 @@
+ANGELS AND DEMONS,PG-13,138
+STAR TREK,R,127
+UP,PG,96
+
+Inception,PG-13,148  
+The Grand Budapest Hotel,R,99  
+Finding Nemo,G,100  
+Joker,R,122  
+Interstellar,PG-13,169
+The Dark Knight,PG-13,152  
+La La Land,PG-13,128  
+Coco,PG,105  
+Parasite,R,132  
+Avengers: Endgame,PG-13,181
