@@ -1,4 +1,6 @@
 import java.io.*;
+import java.io.File; 
+import java.util.Scanner;
 
 
 public class DVDCollection {
@@ -68,7 +70,6 @@ public class DVDCollection {
 			this.dvdArray = dvdA;
 		}
 		
-	
 		for(int dvdIndex = 0; dvdIndex < dvdArray.length; dvdIndex++) {
 
 			if(dvdArray[dvdIndex] == null){
@@ -83,6 +84,7 @@ public class DVDCollection {
 				dvdArray[dvdIndex].setRating(dvdObject.getRating());
 				dvdArray[dvdIndex].setRunningTime(dvdObject.getRunningTime());
 				modified = true;
+				break;
 			}
 		}
 
@@ -90,15 +92,18 @@ public class DVDCollection {
 	}
 	
 	public void removeDVD(String title) {
+		String removeTitle = title.toUpperCase();
+		DVD[] dArr = new DVD[numdvds];
 		for(int dvdIndex = 0; dvdIndex < numdvds; dvdIndex++) {
-
-			if(title.toUpperCase() == dvdArray[dvdIndex].getTitle() ) {
-				dvdArray[dvdIndex] = null;
-				numdvds--;
-
-				modified = true;
+			
+			if(removeTitle != dvdArray[dvdIndex].getTitle() ) {
+				dArr[dvdIndex] = dvdArray[dvdIndex];
+				
 			}
+			
 		}
+		this.dvdArray = dArr;
+		modified = true;
 
 	}
 	
@@ -132,8 +137,26 @@ public class DVDCollection {
 	
 	public void loadData(String filename) {
 		
-
-
+		sourceName = filename;
+		try {
+			//testing read File sample code
+//			System.out.println("Current file path:");
+//			System.out.println(System.getProperty("user.dir"));
+			
+			//Found correct directory!
+			File myObj = new File(System.getProperty("user.dir") + "/src/" + sourceName);
+			Scanner readerFile = new Scanner(myObj);
+			while(readerFile.hasNextLine()) {
+				String data = readerFile.nextLine();
+				//read data from file and create DVD objects for each element from file
+//				DVD dvdObj = new DVD(data);
+			}
+			readerFile.close();
+			
+		}catch(FileNotFoundException e) {
+			System.out.println("File not Found");
+			e.printStackTrace();
+		}
 
 
 
