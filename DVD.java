@@ -36,11 +36,11 @@ public class DVD {
 	// In other words, setter functions, set the parameter's value to their proper variables.
 	public void setTitle(String newTitle) {
 		
-		title = newTitle;
+		title = newTitle.toUpperCase();
 	}
 
 	public void setRating(String newRating) {
-		rating = newRating;
+		rating = newRating.toUpperCase();
 	}
 
 	public void setRunningTime(int newRunningTime) {
@@ -49,7 +49,7 @@ public class DVD {
 	
 	//takes an element and converts it into a whole string
 	public String toString() {
-		String newlyMadeString = getTitle() + '/' + getRating() + '/' + getRunningTime();
+		String newlyMadeString = getTitle().toUpperCase() + '/' + getRating().toUpperCase() + '/' + getRunningTime();
 		return newlyMadeString;	
 	}
 	

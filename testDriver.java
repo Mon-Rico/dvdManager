@@ -11,13 +11,21 @@ public class testDriver {
 
 		DVDCollection example = new DVDCollection();
 		example.addOrModifyDVD("Coco", "R", "110");
-		example.addOrModifyDVD("Joker", "R", "104");
-		example.addOrModifyDVD("Choco", "R", "110");		
-		
+		example.addOrModifyDVD("Joker", "Pg-13", "104");
+		example.addOrModifyDVD("Choco", "Pg", "110");		
+		example.addOrModifyDVD("La La Land","R","128");  
+		example.addOrModifyDVD("Coco","PG","105");  
+		example.addOrModifyDVD("Parasite","R","132");  
 		
 	
-//		System.out.println("example data type: " + example.toString());
-		System.out.println( example.toString() +" \nFinished.");
+		System.out.println( "Old list: \n" + example.toString() +" \n");
+
+		System.out.print("Total Run Time: " + example.getTotalRunningTime() + '\n');
+		
+//		System.out.print("Dvds by Rating: " + example.getDVDsByRating("PG"));
+		
+		example.removeDVD("Choco");
+		System.out.println( "New list: \n" + example.toString() +" \nFinished.");
 		
 //		DVDCollection playList = new DVDCollection();
 	

@@ -41,7 +41,6 @@ public class DVDCollection {
 		for(int dvdIndex = 0; dvdIndex < numdvds; dvdIndex++){
 
 			newlyMadeString += dvdArray[dvdIndex].toString() + '\n';
-			
 		}
 		
 		return newlyMadeString;	
@@ -65,7 +64,6 @@ public class DVDCollection {
 			//copy all elements from previous array
 			for(int i = 0; i < numdvds; i++) {
 				dvdA[i] = dvdArray[i];
-				
 			}
 			this.dvdArray = dvdA;
 		}
@@ -92,19 +90,29 @@ public class DVDCollection {
 	}
 	
 	public void removeDVD(String title) {
-		
+		for(int dvdIndex = 0; dvdIndex < numdvds; dvdIndex++) {
 
+			if(title.toUpperCase() == dvdArray[dvdIndex].getTitle() ) {
+				dvdArray[dvdIndex] = null;
+				numdvds--;
+
+				modified = true;
+			}
+		}
 
 	}
 	
 	public String getDVDsByRating(String rating) {
+		
+		String newlyMadeString = "";
 
+		for(int dvdIndex = 0; dvdIndex < numdvds; dvdIndex++){
+			
+			if(rating.toUpperCase() == dvdArray[dvdIndex].getRating())
+				newlyMadeString += dvdArray[dvdIndex].getTitle() + '\n';
+		}
 
-
-
-
-
-		return null;	// STUB: Remove this line.
+		return newlyMadeString;
 
 	}
 
@@ -113,10 +121,10 @@ public class DVDCollection {
 		int totalRunningTime = 0;
 
 		//for every element in the collection
-		for(DVD dvd: dvdArray)
+		for(int dvdIndex = 0; dvdIndex < numdvds; dvdIndex++) {
 		//get the running time of every element
-			totalRunningTime += dvd.getRunningTime();
-		
+			totalRunningTime += dvdArray[dvdIndex].getRunningTime();
+		}
 		//sum the total and return
 		return totalRunningTime;
 	}
