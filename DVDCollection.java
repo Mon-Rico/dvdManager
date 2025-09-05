@@ -1,5 +1,6 @@
 import java.io.*;
 
+
 public class DVDCollection {
 
 	// Data fields
@@ -35,26 +36,14 @@ public class DVDCollection {
 		// the values for numdvds and the length of the array.
 		// See homework instructions for proper format.
 
-		String newlyMadeString = null;
-		//Have some string variable to return
-		
-		System.out.println("numdvds = " + numdvds);
-		System.out.println("dvdArray.length = " + dvdArray.length);
-
-		//The sorting algorithm
-		
-		//The printing lines
-		
+		String newlyMadeString = "";
 		//for each element in the array
-		for(DVD index: dvdArray){
-			//convert element to string 
-			newlyMadeString = index.toString();
-			System.out.println(newlyMadeString + '\n');
-			return newlyMadeString;
+		for(int dvdIndex = 0; dvdIndex < numdvds; dvdIndex++){
+
+			newlyMadeString += dvdArray[dvdIndex].toString() + '\n';
+			
 		}
 		
-
-		//return whole newly changed array
 		return newlyMadeString;	
 	}
 
@@ -63,9 +52,43 @@ public class DVDCollection {
 		// since the user might enter non-digits when prompted.
 		// If the array is full and a new DVD needs to be added,
 		// double the size of the array first.
-
-
+		
+		int runTime = Integer.parseInt(runningTime);
+		
+		DVD dvdObject = new DVD(title,rating,runTime);
+		
+		
+		//create bigger array if current array is full
+		if(numdvds == dvdArray.length) {
+			//create bigger array
+			DVD[] dvdA = new DVD[14];
+			//copy all elements from previous array
+			for(int i = 0; i < numdvds; i++) {
+				dvdA[i] = dvdArray[i];
+				
+			}
+			this.dvdArray = dvdA;
+		}
+		
 	
+		for(int dvdIndex = 0; dvdIndex < dvdArray.length; dvdIndex++) {
+
+			if(dvdArray[dvdIndex] == null){
+				dvdArray[numdvds] = dvdObject;
+				numdvds++;
+				break;
+			}
+
+			//check if title exist
+			if(dvdObject.getTitle().compareTo(dvdArray[dvdIndex].getTitle()) == 0) {
+				//modify
+				dvdArray[dvdIndex].setRating(dvdObject.getRating());
+				dvdArray[dvdIndex].setRunningTime(dvdObject.getRunningTime());
+				modified = true;
+			}
+		}
+
+		//sort everything to be alphabetical order by title -failed
 	}
 	
 	public void removeDVD(String title) {
@@ -86,20 +109,21 @@ public class DVDCollection {
 	}
 
 	public int getTotalRunningTime() {
+		
+		int totalRunningTime = 0;
 
-
-
-
-
-
-
-		return 0;	// STUB: Remove this line.
-
+		//for every element in the collection
+		for(DVD dvd: dvdArray)
+		//get the running time of every element
+			totalRunningTime += dvd.getRunningTime();
+		
+		//sum the total and return
+		return totalRunningTime;
 	}
 
 	
 	public void loadData(String filename) {
-
+		
 
 
 

@@ -7,11 +7,11 @@ public class DVD {
 	private int runningTime;	// Running time of this DVD in minutes
 
 	//Construtor sets all attributes to its respective variables: title, rating, runningTime; Unless said otherwise
-	public DVD(String dvdTitle, String dvdRating, int dvdRunningTime) 
+	public DVD(String dvdTitle, String dvdRating, int runningTime) 
 	{
 		setTitle(dvdTitle);
 		setRating(dvdRating);
-		setRunningTime(dvdRunningTime);
+		setRunningTime(runningTime);
 	}
 	
 	// All getter functions return respective private variable
@@ -49,7 +49,6 @@ public class DVD {
 	
 	//takes an element and converts it into a whole string
 	public String toString() {
-		
 		String newlyMadeString = getTitle() + '/' + getRating() + '/' + getRunningTime();
 		return newlyMadeString;	
 	}
